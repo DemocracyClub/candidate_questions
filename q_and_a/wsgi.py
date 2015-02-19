@@ -23,9 +23,9 @@ path.append(SITE_ROOT)
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "q_and_a.settings")
-from whitenoise.django import DjangoWhiteNoise
+# from whitenoise.django import DjangoWhiteNoise
 
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
-application = DjangoWhiteNoise(application)
+# application = DjangoWhiteNoise(application)
