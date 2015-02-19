@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        
+        <div class="mermaid">
+            sequenceDiagram
+                Organisation->>Site: Add questions
+                Site-->Public: Can read unanswered questions
+                loop Send questions every n days
+                    Site->>Question queue: previously unsend questions add to queue
+                    Question queue->>Candidate: Gets email with token link to answer form
+                    Candidate->>Site: Populates answers
+                end
+                Site-->Public: Can read answers
+                Site->>Organisation: Can embed/consume answers
+                
+            
+        </div>
+        <script src="bower_components/mermaid/dist/mermaid.full.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    </body>
+</html>
