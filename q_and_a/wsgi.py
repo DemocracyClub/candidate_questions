@@ -17,13 +17,13 @@ import os
 from os.path import abspath, dirname
 from sys import path
 
-from whitenoise.django import DjangoWhiteNoise
 
 SITE_ROOT = dirname(dirname(abspath(__file__)))
 path.append(SITE_ROOT)
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "q_and_a.settings")
+from whitenoise.django import DjangoWhiteNoise
 
 
 from django.core.wsgi import get_wsgi_application
