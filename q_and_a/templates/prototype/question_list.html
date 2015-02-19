@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+{% for question in object_list %}
+    <p>{{ question.question }} ({{ question.organisation.name }})</p>
+{% endfor %}
+</ul>
+{% endblock content %}

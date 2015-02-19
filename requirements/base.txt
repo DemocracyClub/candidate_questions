@@ -9,3 +9,5 @@ django-model-utils
 psycopg2
 
 Pillow
+
+django-bootstrap-themes

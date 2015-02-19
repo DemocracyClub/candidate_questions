@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+{% for org in object_list %}
+    <p>{{ org.name }}</p>
+{% endfor %}
+</ul>
+{% endblock content %}
