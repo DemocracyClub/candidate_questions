@@ -1,0 +1,1 @@
+web: gunicorn q_and_a.wsgi --log-file -
