@@ -123,12 +123,23 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'bootstrap_themes',
+]
+
+PROJECT_APPS = (
+    'token_auth',
     'prototype',
 )
 
 PROJECT_APPS = ()
 
 INSTALLED_APPS += PROJECT_APPS
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    "organisations.authentication.OrginaisationTokenAuthBackend",
+)
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
