@@ -1,3 +1,7 @@
+import binascii
+import os
+
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -11,7 +15,7 @@ class TokenAuthModel(TimeStampedModel):
     class Meta:
         abstract = True
 
-    def generate_key():
+    def generate_key(self):
         return binascii.hexlify(os.urandom(20)).decode()
 
     def save(self, *args, **kwargs):
