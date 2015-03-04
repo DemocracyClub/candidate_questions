@@ -114,7 +114,7 @@ TEMPLATE_DIRS = (
     root('templates'),
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -128,9 +128,8 @@ INSTALLED_APPS = (
 PROJECT_APPS = (
     'token_auth',
     'prototype',
+    'organisations',
 )
-
-PROJECT_APPS = ()
 
 INSTALLED_APPS += PROJECT_APPS
 
@@ -180,9 +179,9 @@ try:
 except ImportError:
     pass
 
-
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # importing test settings file if necessary (TODO chould be done better)
-if len(sys.argv) > 1 and 'test' in sys.argv[1]:
+if len(sys.argv) > 1 and sys.argv[1] in ['test', 'harvest']:
     from .testing import *
 
 # Static files (CSS, JavaScript, Images)

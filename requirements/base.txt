@@ -12,3 +12,5 @@ Pillow
 
 django-bootstrap-themes
 whitenoise
+django-extensions
+django-braces
