@@ -8,3 +8,4 @@ git+git://github.com/gabrielfalcao/lettuce.git
 python-Levenshtein
 selenium
 cssselect
+coverage
