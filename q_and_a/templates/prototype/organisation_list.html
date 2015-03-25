@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-FOO
 <ul>
 {% for org in object_list %}
-    <p>{{ org.name }}</p>
+<p><a href="{% url "organisation" org.id %}">{{ org.name }}</a></p>
 {% endfor %}
 </ul>
 {% endblock content %}
