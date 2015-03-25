@@ -4,7 +4,7 @@ mock
 model-mommy
 coveralls
 git+git://github.com/gabrielfalcao/lettuce.git
-splinter
+splinter>=0.7.2
 python-Levenshtein
 selenium
 cssselect
