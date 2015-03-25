@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{{ object.name }}
+
+{% if object.question_set.count %}
+<h3>Questions:</h3>
+<ol>
+{% for q in object.question_set.all %}
+<li>{{ q.question }}</li>
+{% endfor %}
+</ol>
+{% endif %}
+
+<form method="post" action="{% url "add_question" object.id %}">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Add" />
+</form>
+
+{% endblock %}

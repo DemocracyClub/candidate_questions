@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 class Organisation(models.Model):
@@ -6,6 +7,9 @@ class Organisation(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('organisation', kwargs={'pk': self.id})
 
 
 class Question(models.Model):
