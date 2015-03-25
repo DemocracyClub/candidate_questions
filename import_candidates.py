@@ -13,6 +13,7 @@ while url:
 	print "Fetching url: ", url
 	fp = urllib2.urlopen(url)
 	data = json.load(fp)
+	fp.close()
 	for record in data['result']:
 		try:
 			testrec = Candidate.objects.get(popit_url=record['url'])
