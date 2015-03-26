@@ -13,4 +13,4 @@ class BaseAuthView(SingleObjectMixin, RedirectView):
             if not auth_user:
                 raise PermissionDenied()
             login(self.request, auth_user)
-        return reverse('organisation_questions')
+        return self.request.user.organisation.get_absolute_url()

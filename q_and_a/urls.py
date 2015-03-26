@@ -13,5 +13,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('prototype.urls')),
+    url(r'^organisations', include('organisations.urls')),
+    url(r'^$', TemplateView.as_view(template_name="home.html"), name='home'),
+    # url(r'^', include('prototype.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
