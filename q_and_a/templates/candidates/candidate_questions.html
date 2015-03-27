@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Open questions for {{candidate.name}}</h1>
+
+<div>
+{% for answer in answers %}
+<h3>{{ answer.question }}</h3>
+<form action="{%url "candidate_answer" pk=answer.id %}" method="POST">
+<input type="hidden" name="id" value="{{answer.id}}" />
+{% csrf_token %}
+<div>{{ answerform.as_p }} </div>
+<input type="submit" class="btn btn-primary" value="Submit Answer"/>
+<input type="submit" class="btn btn-warning" name="skip" value="Skip Question"/>
+</form>
+{% if not loop.last %}
+<hr />
+{% endif %}
+{% empty %}
+<p>No open questions found.</p>
+{% endfor %}
+</div>
+
+
+{% endblock content %}
