@@ -9,6 +9,7 @@ class Candidate(TokenAuthModel):
     constituency_id = models.CharField(max_length=20)
     constituency_name = models.CharField(max_length=64)
     party = models.CharField(max_length=64, null=True)
+    participating = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.name

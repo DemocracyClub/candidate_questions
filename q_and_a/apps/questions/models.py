@@ -1,4 +1,5 @@
 from django.db import models
+from django_extensions.db.models import TimeStampedModel
 from organisations.models import Organisation
 from candidates.models import Candidate
 
@@ -14,7 +15,7 @@ class Question(models.Model):
             text = "%s (asked)" % text
         return text
 
-class Answer(models.Model):
+class Answer(TimeStampedModel):
     question = models.ForeignKey(Question)
     candidate = models.ForeignKey(Candidate)
     answer = models.TextField(blank=True)
