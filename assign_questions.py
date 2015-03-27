@@ -20,6 +20,9 @@ for candidate in Candidate.objects.filter(participating=True):
     new_question_count = OPEN_QUESTION_TARGET - open_questions
     # questions are selected in age order. We could do clever shuffling here to 
     # get a cross-section of questions from different organisations
+
+    # TODO: should pay attention to the "asked" boolean on the questions table
+    # if it's being used in the organisations app
     new_questions = Question.objects.raw("""SELECT
         questions_question.* 
         FROM questions_question
