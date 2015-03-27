@@ -1,5 +1,6 @@
 from django.db import models
 from token_auth.models import TokenAuthModel
+from django.core.urlresolvers import reverse
 
 class Candidate(TokenAuthModel):
     popit_id = models.IntegerField(primary_key=True)
@@ -12,3 +13,5 @@ class Candidate(TokenAuthModel):
     def __unicode__(self):
         return self.name
 
+    def get_questions_url(self):
+        return reverse('candidate_questions', kwargs={'pk': self.popit_id})

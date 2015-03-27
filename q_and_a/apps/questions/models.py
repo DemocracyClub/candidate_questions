@@ -1,5 +1,6 @@
 from django.db import models
 from organisations.models import Organisation
+from candidates.models import Candidate
 
 class Question(models.Model):
     organisation = models.ForeignKey(Organisation)
@@ -15,7 +16,10 @@ class Question(models.Model):
 
 class Answer(models.Model):
     question = models.ForeignKey(Question)
-    person_id = models.CharField(blank=True, max_length=100)
+    candidate = models.ForeignKey(Candidate)
     answer = models.TextField(blank=True)
+    completed = models.BooleanField(default=False)
+    completed_timestamp = models.DateField(null=True)
+    
 
 
