@@ -20,19 +20,24 @@ class TestQuestionAssignment(TestCase):
         # create three questions
         self.q1 = Question(question='What is your name?', organisation=org)
         self.q1.save()
+
+        # create a candidate
+        self.candidate = Candidate(name='Terry', participating=True, popit_id=1234)
+        self.candidate.save()
+        # post-save hook on candidate will automatically assign q1
+
         q2 = Question(question='What is your quest?', organisation=org)
         q2.save()
         q3 = Question(question='What is your favourite colour?',organisation=org)
         q3.save()
 
-        # create a candidate
-        self.candidate = Candidate(name='Terry', participating=True, popit_id=1234)
-        self.candidate.save()
 
         # assign 1 question to the candidate
-        self.answer = Answer(question=self.q1)
-        self.answer.candidate = self.candidate
-        self.answer.save()
+        self.answer = Answer.objects.get(question=self.q1, candidate=self.candidate)
+
+    def test_auto_assign(self):
+        """Auto-assign from post-save hook has succeeded"""
+        self.assertEquals(self.answer.question, self.q1)
 
     def test_question_assignment_count(self):
         """Open question count increases when a new question is assigned"""

@@ -176,7 +176,7 @@ LOGGING = {
 
 # CANDIDATE CONFIG
 
-OPEN_QUESTIONS_TARGET = 10
+OPEN_QUESTION_TARGET = 10
 
 # .local.py overrides all the common settings.
 try:
