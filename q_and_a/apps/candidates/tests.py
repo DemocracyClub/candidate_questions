@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.test import TestCase
 
 from django.contrib.auth.models import User
@@ -66,3 +67,8 @@ class TestQuestionAssignment(TestCase):
         count = self.candidate.assign_questions(1)
         self.assertEquals(count,0)
 
+
+    def test_unique(self):
+        """Question/Answer combinations must be unique"""
+        answer = Answer(candidate=self.candidate, question=self.q1)
+        self.assertRaises(IntegrityError,answer.save)
