@@ -16,3 +16,43 @@ class Candidate(TokenAuthModel):
 
     def get_questions_url(self):
         return reverse('candidate_questions', kwargs={'pk': self.popit_id})
+
+    def get_open_question_count(self):
+        from questions.models import Answer
+        open_questions = Answer.objects.filter(candidate=self,completed=False).count()
+        return open_questions
+
+    def assign_questions(self, count):
+        """Add empty Answer records for <n> previously unassigned questions.
+        Returns the number of questions added."""
+
+        from questions.models import Question,Answer
+
+        # Get questions that have not previously been assigned
+        # to this candidate
+
+        new_questions = Question.objects.raw("""SELECT
+            questions_question.* 
+            FROM questions_question
+            LEFT JOIN questions_answer ON 
+                questions_answer.question_id = questions_question.id
+                AND
+                questions_answer.candidate_id = %s
+            WHERE questions_answer.id IS NULL
+            ORDER BY questions_question.id
+            LIMIT %s""", 
+            [self.popit_id, count])
+
+        # add up to (new question count) incomplete answers, depending
+        # on how many questions are available
+        n=0
+        for new_question in new_questions:
+            answer = Answer()
+            answer.candidate = self
+            answer.question = new_question
+            answer.save()
+            n += 1
+        # return the number of answers added
+        return n
+            
+
