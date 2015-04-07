@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from token_auth.models import TokenAuthModel
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 
 class Candidate(TokenAuthModel):
@@ -61,8 +62,7 @@ class Candidate(TokenAuthModel):
 def candidate_created_cb(sender, instance, created, **kwargs):
     """post-save hook that automatically lines up questions when
     a new candidate is created"""
-    from q_and_a.settings import OPEN_QUESTION_TARGET
-    if created:
-        instance.assign_questions(OPEN_QUESTION_TARGET)
+    if created and instance.participating:
+        instance.assign_questions(settings.OPEN_QUESTION_TARGET)
 
 post_save.connect(candidate_created_cb, sender=Candidate)
