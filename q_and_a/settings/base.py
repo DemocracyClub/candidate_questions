@@ -174,6 +174,9 @@ LOGGING = {
 
 # EMAILS
 
+# CANDIDATE CONFIG
+
+OPEN_QUESTION_TARGET = 10
 
 # .local.py overrides all the common settings.
 try:

@@ -21,5 +21,7 @@ class Answer(models.Model):
     completed = models.BooleanField(default=False)
     completed_timestamp = models.DateField(null=True)
     
+    class Meta:
+        unique_together = (('candidate','question'),)
 
 
