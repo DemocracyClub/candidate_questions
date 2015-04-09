@@ -12,7 +12,7 @@ from token_auth.views import BaseAuthView
 class CandidateAuthenticateView(BaseAuthView):
     def get_redirect_url(self, *args, **kwargs):
         if (not self.request.user.is_authenticated()
-                and not hasattr(self.request.user, 'candidate_id')):
+                or not hasattr(self.request.user, 'candidate_id')):
             self.login()
         return self.request.user.candidate.get_absolute_url()
 

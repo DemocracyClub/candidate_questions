@@ -7,7 +7,7 @@ from questions.forms import QuestionForm
 class OrganisationAuthenticateView(BaseAuthView):
     def get_redirect_url(self, *args, **kwargs):
         if (not self.request.user.is_authenticated()
-                and not hasattr(self.request.user, 'organisation_id')):
+                or not hasattr(self.request.user, 'organisation_id')):
             self.login()
         return self.request.user.organisation.get_absolute_url()
 
