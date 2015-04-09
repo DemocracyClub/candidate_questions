@@ -1,18 +1,12 @@
-import os
-import json
-import urllib2
-import sys
-import csv
-
-os.environ['DJANGO_SETTINGS_MODULE'] = 'q_and_a.settings'
-
-import q_and_a.settings
-from q_and_a.apps.candidates.models import Candidate
+from django.core.management.base import BaseCommand
+from candidates.models import Candidate
 from django.contrib.auth import get_user_model
 
-def load_from_csv():
-    filename = sys.argv[1]
+import json
+import urllib2
+import csv
 
+def load_from_csv(filename):
     csv_file = csv.reader(open(filename))
     headings = csv_file.next()
     User = get_user_model()
@@ -36,7 +30,6 @@ def load_from_csv():
             party=record['party'].decode('utf-8'))
         candidate.save()
         print u"Added: {} ({}, {})".format(candidate.name, candidate.party, candidate.constituency_name)
-
 
 def load_from_api():
     url = "http://yournextmp.popit.mysociety.org/api/v0.1/search/persons?q=_exists_:standing_in.2015.post_id&page=16"
@@ -67,5 +60,6 @@ def load_from_api():
             break
         url = data['next_url']
 
-if __name__ == '__main__':
-    load_from_csv()
+class Command(BaseCommand):
+    def handle(self, *args, **options):
+        load_from_csv(args[0])
