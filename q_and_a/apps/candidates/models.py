@@ -17,6 +17,9 @@ class Candidate(TokenAuthModel):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return self.get_questions_url()
+
     def get_questions_url(self):
         return reverse('candidate_questions', kwargs={'pk': self.popit_id})
 
