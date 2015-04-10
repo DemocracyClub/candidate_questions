@@ -123,6 +123,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'bootstrap_themes',
+    'tastypie',
 ]
 
 PROJECT_APPS = (
@@ -202,3 +203,5 @@ STATICFILES_DIRS = (
 )
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+TASTYPIE_DEFAULT_FORMATS = ['json']
