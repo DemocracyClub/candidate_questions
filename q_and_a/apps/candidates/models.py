@@ -64,7 +64,7 @@ class Candidate(TokenAuthModel):
 
 def candidate_created_cb(sender, instance, created, **kwargs):
     """post-save hook that automatically lines up questions when
-    a new candidate is created"""
+    a new candidate is saved (if they're participating)"""
     if instance.participating:
         instance.assign_questions(settings.OPEN_QUESTION_TARGET)
 
