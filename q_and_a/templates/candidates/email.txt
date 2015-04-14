@@ -1,0 +1,5 @@
+Dear {{ candidate.name }},
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porta lorem feugiat commodo ultrices. Maecenas id odio vestibulum, porttitor nibh ac, sagittis nibh. Donec gravida, velit id hendrerit mattis, turpis neque volutpat nunc, sed consequat velit dui id diam. Duis tincidunt velit at diam vulputate, at faucibus lorem fermentum. Donec facilisis dui enim, non ultricies eros dapibus vel. Cras blandit mattis nulla, et porta urna ultricies vel. Proin pretium vulputate posuere. Etiam tellus nisl, interdum eu lectus at, aliquet pellentesque enim. Sed sollicitudin nulla arcu, et rhoncus orci aliquam et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed aliquam orci massa, quis imperdiet nunc euismod ut. Cras mattis mi vitae lacus efficitur, ut blandit massa tincidunt. 
+
+http://questions.campaignreply.org/candidates/authenticate/{{ candidate.auth_token }}
