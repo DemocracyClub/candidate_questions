@@ -9,12 +9,18 @@
 <div>
 {% for answer in answers %}
 <h3>{{ answer.question }}</h3>
+<p class="lead">Question asked by: {{answer.question.organisation }}</p>
 <form action="{%url "candidate_answer" pk=answer.id %}" method="POST">
 <input type="hidden" name="id" value="{{answer.id}}" />
 {% csrf_token %}
-<div>{{ answer.make_form.as_p }} </div>
+<div class="form-group">
+<label for="answer">Your answer:</label>
+<textarea class="form-control" name="answer"></textarea>
+</div>
+<div class="form-group">
 <input type="submit" class="btn btn-primary" value="Submit Answer"/>
 <input type="submit" class="btn btn-warning" name="skip" value="Skip Question"/>
+</div>
 </form>
 {% if not loop.last %}
 <hr />
