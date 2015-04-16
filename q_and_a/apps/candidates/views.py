@@ -39,7 +39,7 @@ class CandidateAnswer(FormView):
     def form_valid(self, form):
         self.object = form.save()
         self.object.completed = True
-        self.object.completed_at = datetime.datetime.utcnow()
+        self.object.completed_timestamp = datetime.datetime.utcnow()
         self.object.save()
 
         return super(CandidateAnswer, self).form_valid(form)
