@@ -12,7 +12,7 @@
 <form action="{%url "candidate_answer" pk=answer.id %}" method="POST">
 <input type="hidden" name="id" value="{{answer.id}}" />
 {% csrf_token %}
-<div>{{ answerform.as_p }} </div>
+<div>{{ answer.make_form.as_p }} </div>
 <input type="submit" class="btn btn-primary" value="Submit Answer"/>
 <input type="submit" class="btn btn-warning" name="skip" value="Skip Question"/>
 </form>

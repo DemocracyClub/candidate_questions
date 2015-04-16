@@ -8,7 +8,7 @@
 <h3>Questions:</h3>
 <ol>
 {% for q in object.question_set.all %}
-<li>{{ q.question }}</li>
+<li>{{ q.question }} ({{q.type_label}})</li>
 {% endfor %}
 </ol>
 {% endif %}

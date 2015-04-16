@@ -23,7 +23,6 @@ class CandidateQuestionsView(TemplateView):
         context = super(CandidateQuestionsView, self).get_context_data(**kwargs)
         context['candidate'] = get_object_or_404(Candidate, popit_id=kwargs['pk'])
         context['answers'] = Answer.objects.filter(candidate=context['candidate'], completed=False)
-        context['answerform'] = AnswerForm
         return context
 
 class CandidateAnswer(FormView):
