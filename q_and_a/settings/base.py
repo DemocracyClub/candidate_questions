@@ -128,7 +128,6 @@ INSTALLED_APPS = [
 
 PROJECT_APPS = (
     'token_auth',
-    'prototype',
     'organisations',
     'candidates',
     'questions',
